@@ -1,3 +1,3 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-console.log("Application is up and running");
+console.log("User Service is up and running");
