@@ -1,0 +1,60 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/schemas/v3.1/schema.json
+openapi: "3.0.0"
+
+components: 
+  securitySchemes: 
+    JWT: 
+      description: JWT Bearer Token
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+info:
+  version: 1.0.0
+  title: User Service API
+  license:
+    name: MIT
+    url: https://mit-license.org/
+servers:
+  - url: http://localhost:3001/api/v1/users
+paths:
+  /users:
+    get: 
+      summary: Retrieve a list of users
+      operationId: getUsers
+      security: 
+        - JWT:
+          - "#/components/securitySchemes/JWT"
+      tags:
+        - users
+      responses:
+        '200':
+          description: A paged array of users
+          content: 
+            application/json:
+              schema:
+                type: array
+                example: 
+                  users:
+                      [
+                        {
+                          id: "5e054b8c-50ec-4688-bc6f-ef096c97faeb",
+                          firstName: "John",
+                          lastName: "Doe"
+                        },                        
+                        {
+                          id: "03bc6aee-d684-44af-acb6-5c8f5ae3ce2f",
+                          firstName: "Blaise",
+                          lastName: "Pascal"
+                        },                        
+                        {
+                          id: "029bafb8-9b0e-4c27-8f38-3c13b67ac831",
+                          firstName: "Fib",
+                          lastName: "O'nacci"
+                        }                        
+                      ]
+        '401':
+          description: Unauthorized
+        default: 
+          description: Unexpected Error
+          
