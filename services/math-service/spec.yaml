@@ -1,0 +1,53 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/schemas/v3.1/schema.json
+openapi: "3.0.0"
+
+components: 
+  securitySchemes: 
+    JWT: 
+      description: JWT Bearer Token
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+info:
+  version: 1.0.0
+  title: Math Service API
+  license:
+    name: MIT
+    url: https://mit-license.org/
+servers:
+  - url: http://localhost:3001/api/v1/math
+paths:
+  /math:
+    post: 
+      summary: Calculate the result of a selection of operations over a set of operands
+      operationId: doMath
+      security: 
+        - JWT:
+          - "#/components/securitySchemes/JWT"
+      tags:
+        - Math 
+      requestBody: 
+        content: 
+          text/json:
+            schema: 
+              type: object
+            example:
+              {
+                op: "addition",
+                numbers: [1,2,3,4,5]
+              } 
+      responses:
+        '200':
+          description: The result for your given operation over your given operands
+          content: 
+            text/json:
+              schema:
+                type: integer
+                example: 
+                  15
+        '401':
+          description: Unauthorized
+        default: 
+          description: Unexpected Error
+          
