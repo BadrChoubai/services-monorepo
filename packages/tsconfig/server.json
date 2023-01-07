@@ -7,10 +7,16 @@
             "es6",
             "dom"
         ],
-        "target": "es5",
-        "module": "commonjs",
         "moduleResolution": "node",
         "emitDecoratorMetadata": true,
-        "experimentalDecorators": true
+        "experimentalDecorators": true,
+        "strictPropertyInitialization": false,
+        "sourceMap": true,
+        "target": "esnext",
+        "module": "commonjs",
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "noImplicitAny": true,
+        "strict": true
     }
 }

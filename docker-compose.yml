@@ -1,0 +1,32 @@
+version: "3"
+
+services:
+  service_db:
+    container_name: service_db
+    image: mysql:latest
+    volumes:
+      - mysql-data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=servicesdb
+    ports:
+      - 3306:3306
+  user_service:
+    container_name: user_service 
+    build:
+      context: .
+      dockerfile: ./services/user-service/Dockerfile
+    restart: always
+    ports:
+      - 3001:3001
+    networks:
+      - services_network
+        
+volumes:
+  mysql-data:
+
+# Define a network, which allows containers to communicate
+# with each other, by using their container name as a hostname
+networks:
+  services_network:
+    external: true
