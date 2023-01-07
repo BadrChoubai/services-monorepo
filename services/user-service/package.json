@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "dev": "node dist/app.js"
+    "dev": "node dist/index.js"
   },
   "dependencies": {
       "@types/express": "^4.17.15",
