@@ -9,7 +9,15 @@
       "outputs": []
     },
     "test": {
-      "inputs": ["services/*/test/**"]
+      "inputs": ["test/**"]
+    },
+    "test:e2e": {
+      "dependsOn": ["^test"],
+      "inputs": ["test/**"]
+    },
+    "test:cov": {
+      "dependsOn": ["^test:e2e"],
+      "inputs": ["test/**"]
     },
     "dev": {
       "cache": false
