@@ -9,7 +9,7 @@
       "outputs": []
     },
     "test": {
-      "inputs": ["test/**"]
+      "inputs": ["services/*/test/**"]
     },
     "dev": {
       "cache": false

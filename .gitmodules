@@ -1,6 +1,3 @@
-[submodule "services/services/todo-service"]
-	path = services/services/todo-service
-	url = https://github.com/BadrChoubai/todo-service.git
-[submodule "services/services/services/todo-servicee"]
-	path = services/services/services/todo-servicee
+[submodule "services/todo-service"]
+	path = services/todo-service
 	url = https://github.com/BadrChoubai/todo-service.git
