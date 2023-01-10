@@ -1,9 +1,8 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "pipeline": {
-    "build": {
-      "dependsOn": ["^build"],
-      "outputs": ["dist/**"]
+    "dev": {
+     "cache": false
     },
     "lint": {
       "outputs": []
@@ -19,8 +18,9 @@
       "dependsOn": ["^test:e2e"],
       "inputs": ["test/**"]
     },
-    "dev": {
-      "cache": false
+    "build": {
+      "dependsOn": ["^test", "^test:e2e", "test:cov"],
+      "outputs": ["dist/**"]
     }
   }
 }
